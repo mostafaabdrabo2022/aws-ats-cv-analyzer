@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart ATS Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-card">
+    <h1>فاحص السيرة الذاتية الذكي (ATS)</h1>
+    <p class="subtitle">حلل سيرتك الذاتية ومدى توافقها مع متطلبات الوظيفة بواسطة الذكاء الاصطناعي</p>
+
+    <div id="uploadForm">
+        <div class="form-group">
+            <label>1. اختر ملف السيرة الذاتية (PDF):</label>
+            <input type="file" id="cvFile" accept="application/pdf">
+        </div>
+
+        <div class="form-group">
+            <label>2. الوصف الوظيفي (Job Description):</label>
+            <textarea id="jobDesc" placeholder="الصق المهارات والاشتراطات المطلوبة للوظيفة هنا..."></textarea>
+        </div>
+
+        <button id="submitBtn" onclick="processCV()">بدء التحليل الآن</button>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p id="loaderText">جاري رفع الملف وقراءته بواسطة Textract...</p>
+    </div>
+
+    <!-- Results Display -->
+    <div class="results-box" id="resultsBox">
+        <div class="score-container">
+            <div id="scoreCircle" class="score-circle">0%</div>
+            <h3 style="margin: 5px 0;">نسبة التوافق مع الوظيفة</h3>
+        </div>
+
+        <hr style="border-color: #334155; margin: 20px 0;">
+
+        <h4>الكلمات والمهارات المفقودة في الـ CV:</h4>
+        <div class="tags-list" id="missingKeywords"></div>
+        
+        <button onclick="resetForm()" style="margin-top: 25px; background: #334155;">تحليل ملف آخر</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
